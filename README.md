@@ -1,4 +1,4 @@
-# PWSIP_2016-17_ST_2
+﻿# PWSIP_2016-17_ST_2
 
 Projekt zespołowy
 
@@ -8,3 +8,6 @@ Zespół:
 - Dawid Rutkowski
 - Bartosz Szyjko
 - Paweł Wojewoda
+
+Strona internetowa z datami:
+http://jrafalko.cba.pl/pz2.html
