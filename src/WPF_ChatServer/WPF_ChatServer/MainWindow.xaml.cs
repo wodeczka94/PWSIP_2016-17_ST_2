@@ -47,7 +47,8 @@ namespace WPF_ChatServer
         {
             Port = 1024;
             QueueLength = 4;
-            IP = IPAddress.Parse("82.139.159.145");
+            IP = IPAddress.Loopback;
+            //IP = IPAddress.Parse("82.139.159.145");
             IPEP = new IPEndPoint(IP, Port);
 
             SocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -66,11 +67,51 @@ namespace WPF_ChatServer
             {
                 Socket client = SocketServer.Accept();
                 AppendText("Użytkownik połączony - autoryzacja");
-
-                AddItem(new Client(client));
+                Thread sesja = new Thread(() => Autorization(client));
+                sesja.Start();
+                //AddItem(new Client(client));
             }
         }
         
+
+        private void Autorization(Socket client)
+        {
+            string msg = "send login";
+            //byte[] bytes = new byte[256];
+            //byte[] msga = Encoding.UTF8.GetBytes(msg);
+
+            //wyslanie zpytania o login i haslo
+            //client.Send(msga);
+            SocketDataTransfer.Send(client, msg);
+
+            //odebranie loginu i hasla
+            //client.Receive(bytes);  
+            //msg = Encoding.UTF8.GetString(bytes);
+            msg = SocketDataTransfer.Recive(client);
+
+            //sprawdzenie czy login i haslo sa poprawne
+            bool czyDobre = true;
+
+            //wyslanie informacji o poprawnosci danych
+            if (czyDobre)
+            {
+                msg = "polaczono";
+                //msga = Encoding.UTF8.GetBytes(msg);
+                //client.Send(msga);
+
+                //dodanie do listy polaczonych uzytkownikow
+                AddItem(new Client(client));
+            }
+            else
+            {
+                msg = "niepolaczono";
+                //msga = Encoding.UTF8.GetBytes(msg);
+                //client.Send(msga);
+
+            }
+            SocketDataTransfer.Send(client, msg);
+        }
+
         private void AppendText(string text, string side = null)
         {
             richTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, 
