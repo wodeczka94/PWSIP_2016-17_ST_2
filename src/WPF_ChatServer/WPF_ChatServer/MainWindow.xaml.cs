@@ -26,7 +26,6 @@ namespace WPF_ChatServer
     public partial class MainWindow : Window
     {
         private ObservableCollection<Client> Clients { get; set; }
-
         private Socket SocketServer { get; set; }
         private Thread ThreadWaitForClients { get; set; }
         private IPAddress IP { get; set; }
@@ -69,7 +68,6 @@ namespace WPF_ChatServer
                 AppendText("Użytkownik połączony - autoryzacja");
                 Thread sesja = new Thread(() => Autorization(client));
                 sesja.Start();
-                //AddItem(new Client(client));
             }
         }
         
@@ -77,38 +75,32 @@ namespace WPF_ChatServer
         private void Autorization(Socket client)
         {
             string msg = "send login";
-            //byte[] bytes = new byte[256];
-            //byte[] msga = Encoding.UTF8.GetBytes(msg);
 
             //wyslanie zpytania o login i haslo
-            //client.Send(msga);
             SocketDataTransfer.Send(client, msg);
 
             //odebranie loginu i hasla
-            //client.Receive(bytes);  
-            //msg = Encoding.UTF8.GetString(bytes);
             msg = SocketDataTransfer.Recive(client);
 
             //sprawdzenie czy login i haslo sa poprawne
-            bool czyDobre = true;
+            bool czyDobre;
+            string[] dane = msg.Split('|');
+            if (dane[1] == "login" && dane[2] == "haslo")
+                czyDobre = true;
+            else
+                czyDobre = false;
 
             //wyslanie informacji o poprawnosci danych
             if (czyDobre)
             {
                 msg = "polaczono";
-                //msga = Encoding.UTF8.GetBytes(msg);
-                //client.Send(msga);
 
                 //dodanie do listy polaczonych uzytkownikow
                 AddItem(new Client(client));
             }
             else
-            {
                 msg = "niepolaczono";
-                //msga = Encoding.UTF8.GetBytes(msg);
-                //client.Send(msga);
 
-            }
             SocketDataTransfer.Send(client, msg);
         }
 

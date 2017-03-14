@@ -37,7 +37,7 @@ namespace WPF_ChatClient
             //IP = IPAddress.Parse("192.168.40.100");
             IPEP = new IPEndPoint(IP, Port);
 
-
+            tbLogin.Focus();
             //while (SocketServer == null || !SocketServer.Connected)
             //{
             //    try
@@ -55,6 +55,7 @@ namespace WPF_ChatClient
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            int i = 0;
             //polaczenie z serverem
             while (SocketServer == null || !SocketServer.Connected)
             {
@@ -65,6 +66,12 @@ namespace WPF_ChatClient
                 }
                 catch (Exception d)
                 {
+                    if (i == 3)
+                    {
+                        MessageBox.Show("Nie można połączyć się z serwerm");
+                        return;
+                    }
+                    i++;
                     MessageBox.Show(d.ToString());
                     SocketServer.Close();
                     Thread.Sleep(3000);
@@ -76,40 +83,48 @@ namespace WPF_ChatClient
             //byte[] bytes = new byte[256];
 
             //odebranie prosby o dane logowania
-            //SocketServer.Receive(bytes);
-            //msg = Encoding.UTF8.GetString(bytes);
-            //msg = new string( msg.ToCharArray().Distinct().ToArray());
             msg = SocketDataTransfer.Recive(SocketServer);
-            MessageBox.Show(msg);
+            //MessageBox.Show(msg);
 
             //wyslanie danych logowania
             string login = tbLogin.Text;
-            string haslo = tbHaslo.Text;
+            string haslo = tbHaslo.Password;
             msg = "dane|" + login + "|" + haslo;
-            //msga = Encoding.UTF8.GetBytes(msg);
-            //SocketServer.Send(msga);
             SocketDataTransfer.Send(SocketServer, msg);
 
             //otrzymanie poprawnosci o danych logowania
-            //SocketServer.Receive(bytes);
-            //msg = Encoding.UTF8.GetString(bytes);
             msg = SocketDataTransfer.Recive(SocketServer);
             if (msg == "polaczono")
             {
-               //jesli poprawne to przejdz do okna
-
+                //jesli poprawne to przejdz do okna
+                MainWindow m = new MainWindow();
+                Close();
+                m.ShowDialog();
             }
             else
             {
                 //inaczej wiadomosc i niepoprawnosci danych
                 MessageBox.Show("Podane dane są nie poprawne.");
-
+                tbLogin.Focus();
+                SocketServer.Close();
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
+        }
 
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            tb.SelectAll();
+        }
+
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox tb = sender as  PasswordBox;
+            tb.SelectAll();
         }
     }
 }

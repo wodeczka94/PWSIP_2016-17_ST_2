@@ -26,3 +26,20 @@ G:\Szkola\Semestr 6\Projekt zespołowy II\WPF_ChatServer\WPF_ChatServer\obj\Debu
 G:\Szkola\Semestr 6\Projekt zespołowy II\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.g.resources
 G:\Szkola\Semestr 6\Projekt zespołowy II\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.Properties.Resources.resources
 G:\Szkola\Semestr 6\Projekt zespołowy II\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.csproj.GenerateResource.Cache
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\bin\Debug\WPF_ChatServer.exe.config
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.exe
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.pdb
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\bin\Debug\WPF_ChatServer.exe
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\bin\Debug\WPF_ChatServer.pdb
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.csprojResolveAssemblyReference.cache
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\MainWindow.g.cs
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\App.g.cs
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer_MarkupCompile.cache
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer_MarkupCompile.lref
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\MainWindow.baml
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.g.resources
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.Properties.Resources.resources
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer.csproj.GenerateResource.Cache
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\bin\Debug\baza_danych.mdf
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\bin\Debug\baza_danych_log.ldf
+C:\Users\Dawid\Documents\GitHub\PWSIP_2016-17_ST_2\src\WPF_ChatServer\WPF_ChatServer\obj\Debug\WPF_ChatServer_Content.g.cs
