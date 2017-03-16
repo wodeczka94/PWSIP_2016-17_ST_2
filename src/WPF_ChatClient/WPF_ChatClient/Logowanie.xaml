@@ -1,0 +1,40 @@
+﻿<Window x:Class="WPF_ChatClient.Logowanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_ChatClient"
+        mc:Ignorable="d"
+        Title="Logowanie" Height="169.853" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Label Content="Login: " HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+            <TextBox Name="tbLogin" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="5,10" GotFocus="TextBox_GotFocus"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Content="Hasło: " HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+            <PasswordBox Name="tbHaslo" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="5,10" GotFocus="PasswordBox_GotFocus"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Logowanie" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" IsDefault="True"/>
+            <Button Content="Anuluj" Grid.Column="1" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1" IsCancel="True"/>
+        </Grid>
+    </Grid>
+</Window>
