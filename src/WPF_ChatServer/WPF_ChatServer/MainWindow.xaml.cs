@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace WPF_ChatServer
 {
@@ -47,7 +48,7 @@ namespace WPF_ChatServer
             Port = 1024;
             QueueLength = 4;
             IP = IPAddress.Loopback;
-            //IP = IPAddress.Parse("10.33.57.191");
+            //IP = IPAddress.Parse("10.33.61.10");
             IPEP = new IPEndPoint(IP, Port);
 
             SocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -64,7 +65,9 @@ namespace WPF_ChatServer
         {
             while (Wait)
             {
+                if (!Wait) break;
                 Socket socketclient = SocketServer.Accept();
+                if (!Wait) break;
                 Client client = new Client(socketclient, this);
                 AddItem(client);
             }
@@ -73,6 +76,7 @@ namespace WPF_ChatServer
         public void DisconnectClient(Client client)
         {
             RemoveItem(client);
+            client.Dispose();
         }
 
 
@@ -101,12 +105,17 @@ namespace WPF_ChatServer
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Wait = false;
+            SocketServer.Close();
+
             List<Client> ms = Clients.ToList();
 
-            foreach (var item in ms)
-            {
-                item.Disconnect();
-            }
+            //foreach (var item in ms)
+            //{
+            //    item.Disconnect();
+            //}
+
+            //SocketServer.Shutdown(SocketShutdown.Both);
         }
     }
 }

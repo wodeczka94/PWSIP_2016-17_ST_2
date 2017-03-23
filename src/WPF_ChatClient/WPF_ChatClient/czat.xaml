@@ -5,25 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ChatClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="279*"/>
+            <RowDefinition Height="160*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="32*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="242*"/>
-            <ColumnDefinition Width="222*"/>
-            <ColumnDefinition Width="53*"/>
-        </Grid.ColumnDefinitions>
-        <RichTextBox x:Name="richTextBox" Grid.RowSpan="2" Margin="5">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="RichTextBox"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Button x:Name="button" Content="Button" Grid.Column="2" Margin="5" Click="buttonConnect_Click"/>
+        <StackPanel Margin="5"/>
+        <RichTextBox Grid.Row="2" Margin="5"/>
 
     </Grid>
 </Window>

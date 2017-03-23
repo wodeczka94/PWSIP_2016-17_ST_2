@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -15,13 +16,15 @@ namespace WPF_ChatClient
     public partial class App : Application
     {
         public static Socket server;
+        public static StreamWriter Writer;
+        public static StreamReader Reader;  
+        public static int Index;
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            SocketDataTransfer.Send("dc");
+            SocketDataTransfer.Send(server, "dc");
             server.Shutdown(SocketShutdown.Send);
-            string s = SocketDataTransfer.Recive();
-            MessageBox.Show("Od serwera: "+s);
+            string s = SocketDataTransfer.Recive(server);
             server.Shutdown(SocketShutdown.Receive);
             server.Close();
         }

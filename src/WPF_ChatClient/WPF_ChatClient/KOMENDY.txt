@@ -1,0 +1,16 @@
+﻿KOMENDY PRZESYLANE Z KLIENTA DO SERWERA
+
+login|v1|V2		- logowanie 
+	[v1 - login] 
+	[v2 - haslo]
+
+dc				- wylogowanie z serera
+
+reg|v1|v2|v3	- zarejestrowanie nowego uzytkownika 
+	[v1 - login] 
+	[v2 - haslo] 
+	[v3 - mail]
+
+check|v1|v2		- sprawdzenie czy wybrane dane znajdują sie w bazie danych
+	[v1 - co chcemy sprawdzic - login/haslo]
+	[v2 - wartosc jaka mamy sprawdzic]

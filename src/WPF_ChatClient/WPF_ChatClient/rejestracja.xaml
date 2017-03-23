@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPF_ChatClient.rejestracja"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_ChatClient"
+        mc:Ignorable="d"
+        Title="rejestracja" Height="300" Width="300" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="78,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" LostFocus="textBoxLogin_LostFocus"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="78,124,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="78,198,0,0" VerticalAlignment="Top" Width="75" Click="ButtonZarejestruj_Click"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="78,163,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" LostFocus="textBoxMail_LostFocus"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="223,73,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="223,174,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

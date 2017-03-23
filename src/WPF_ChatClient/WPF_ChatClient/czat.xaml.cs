@@ -24,52 +24,43 @@ namespace WPF_ChatClient
     /// </summary>
     public partial class czat : Window
     {
-        private IPAddress IP { get; set; }
-        private string IPString { get; set; }
-        private IPEndPoint IPEP { get; set; }
-        private Socket SocketServer { get; set; }
-        private int Port { get; set; }
-        private bool Wait { get; set; }
-        private Thread ThreadRequest { get; set; }
+        private Socket Server
+        {
+            get { return App.server; }
+        }
+        
+        public bool Shown { get; set; }
 
         public czat()
         {
             InitializeComponent();
 
-            IPString = "82.139.159.145";
-            IP = IPAddress.Parse(IPString);
-            Port = 1024;
-            IPEP = new IPEndPoint(IP, Port);
-
-            
         }
-
-        private void buttonConnect_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-                SocketServer.Connect(IPEP);
-                AppendText("Połączono z serwerem.", "Client");
-            }
-            catch (SocketException)
-            {
-                SocketServer.Close();
-            }
-        }
-
+        
         private void AppendText(string text, string side = null)
         {
-            richTextBox.Dispatcher.Invoke(DispatcherPriority.Normal,
-                new Action(() =>
-                {
-                    string message = DateTime.Now.ToShortTimeString();
-                    if (side != null)
-                        message += " [" + side + "] ";
-                    message += text + "\n";
-                    richTextBox.AppendText(message);
-                }));
+            //richTextBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+            //    new Action(() =>
+            //    {
+            //        string message = DateTime.Now.ToShortTimeString();
+            //        if (side != null)
+            //            message += " [" + side + "] ";
+            //        message += text + "\n";
+            //        richTextBox.AppendText(message);
+            //    }));
         }
+
+        public new void Show()
+        {
+            Shown = true;
+            base.Show();
+        }
+
+        public new void Close()
+        {
+            Shown = false;
+            base.Close();
+        }
+
     }
 }

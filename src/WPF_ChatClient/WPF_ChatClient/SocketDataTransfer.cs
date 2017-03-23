@@ -9,19 +9,20 @@ namespace WPF_ChatClient
 {
     public static class SocketDataTransfer
     {
-        public static string Recive()
+        public static string Recive(Socket socket)
         {
             byte[] buffer = new byte[1024];
-            int length = App.server.Receive(buffer);
+            int length = socket.Receive(buffer);
             string message = Encoding.UTF8.GetString(buffer);
             message = message.Remove(length);
+
             return message;
         }
 
-        public static void Send(string message)
+        public static void Send(Socket socket, string message)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(message);
-            App.server.Send(buffer);
+            socket.Send(buffer);
         }
     }
 }

@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using WPF_ChatClient;
 
 namespace WPF_ChatClient
 {
@@ -23,20 +25,54 @@ namespace WPF_ChatClient
         private Socket Server
         {
             get { return App.server; }
-            set { App.server = value; }
         }
+        private int ID
+        {
+            get { return App.Index; }
+        }
+        private List<czat> oknaCzatu;
 
         public kontakty()
         {
 
             InitializeComponent();
 
+            oknaCzatu = new List<czat>();
+
             WczytajKontakty();
         }
 
         private void WczytajKontakty()
         {
-            //wyslij zapytanie 
+            //wyslij zapytanie
+            string msg = "list";
+            SocketDataTransfer.Send(Server, msg);
+
+            //odbierz kontakty
+            msg = SocketDataTransfer.Recive(Server);
+
+            //wstaw kontakty do listy
+            string[] msgs = msg.Split('|');
+
+            spKontakty.Children.Clear();
+
+            for (int i = 1; i < msgs.Length; i++)
+            {
+                string[] r = msgs[i].Split(':');
+                string name = r[1];
+                int id = int.Parse(r[0]);
+
+                Contact c = new Contact(id, name);
+                spKontakty.Children.Add(c);
+            }
+        }
+
+        private void buttonDodajKontakt_Click(object sender, RoutedEventArgs e)
+        {
+            DodawanieKontaku d = new DodawanieKontaku();
+            d.ShowDialog();
+            if (d.DialogResult.HasValue && d.DialogResult.Value)
+                WczytajKontakty();
         }
     }
 }

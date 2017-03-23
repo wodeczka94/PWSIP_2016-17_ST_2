@@ -22,14 +22,19 @@ namespace WPF_ChatClient
     /// </summary>
     public partial class Logowanie : Window
     {
-        private Socket SocketServer
+        private Socket Server
         {
             get { return App.server; }
             set { App.server = value; }
         }
+        private int Index
+        {
+            set { App.Index = value; }
+        }
         private IPAddress IP;
         private IPEndPoint IPEP;
         private int Port;
+        
 
 
         public Logowanie()
@@ -44,12 +49,12 @@ namespace WPF_ChatClient
 
             int i = 0;
             //polaczenie z serverem
-            while (SocketServer == null || !SocketServer.Connected)
+            while (Server == null || !Server.Connected)
             {
                 try
                 {
-                    SocketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    SocketServer.Connect(IPEP);
+                    Server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    Server.Connect(IPEP);
                 }
                 catch (Exception d)
                 {
@@ -60,15 +65,23 @@ namespace WPF_ChatClient
                     }
                     i++;
                     MessageBox.Show(d.ToString());
-                    SocketServer.Close();
+                    Server.Close();
                     Thread.Sleep(3000);
                 }
             }
 
             tbLogin.Focus();
         }
+
+        private void ButtonRejestracja_Click(object sender, RoutedEventArgs e)
+        {
+            rejestracja r = new rejestracja();
+            Hide();
+            r.ShowDialog();
+            Show();
+        }
         
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLogowanie_Click(object sender, RoutedEventArgs e)
         {
             string msg;
             
@@ -76,13 +89,17 @@ namespace WPF_ChatClient
             string login = tbLogin.Text;
             string haslo = tbHaslo.Password;
             msg = "login|" + login + "|" + haslo;
-            SocketDataTransfer.Send(msg);
+            SocketDataTransfer.Send(Server, msg);
 
             //otrzymanie poprawnosci o danych logowania
-            msg = SocketDataTransfer.Recive();
-            if (msg == "polaczono")
+            msg = SocketDataTransfer.Recive(Server);
+            string[] req = msg.Split('|');
+
+            if (bool.Parse(req[1]))
             {
                 //jesli poprawne to przejdz do okna
+                Index = int.Parse(req[2]);
+
                 kontakty m = new kontakty();
                 Close();
                 m.ShowDialog();
@@ -95,7 +112,7 @@ namespace WPF_ChatClient
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonZamknij_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }

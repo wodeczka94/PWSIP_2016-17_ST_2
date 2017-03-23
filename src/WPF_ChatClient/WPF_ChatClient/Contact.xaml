@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WPF_ChatClient.Contact"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_ChatClient"
+             mc:Ignorable="d" d:DesignWidth="200" Height="25" Name="_this" MouseDoubleClick="_this_MouseDoubleClick">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="Azure">
+        <Border 
+                BorderBrush="Red"
+                Background="Azure"
+                BorderThickness="2">
+            <Label Content="{Binding ElementName=_this, Path=Nick}" FontSize="10"/>
+        </Border>
+    </Grid>
+</UserControl>
