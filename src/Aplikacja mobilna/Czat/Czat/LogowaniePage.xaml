@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Czat.LogowaniePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Czat"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="identyfikatorTextBox" Margin="40,20,40,0" Grid.Row="1" TextWrapping="Wrap" PlaceholderText="Identyfikator"/>
+        <PasswordBox x:Name="hasloPasswordBox" Margin="40,20,40,0" Grid.Row="2" PlaceholderText="Hasło"/>
+        <Button x:Name="zalogujButton" Content="Zaloguj" Margin="40,11,40,12" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="20" Click="zalogujButton_Click"/>
+        <TextBlock x:Name="zarejestrujTextBlock" Margin="40, 20" Grid.Row="5" TextWrapping="Wrap" Text="Nie masz konta? Utwórz je!" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" Tapped="zarejestrujTextBlock_Tapped"/>
+    </Grid>
+</Page>
